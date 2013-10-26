@@ -48,13 +48,13 @@ $(function() {
 <div class="control-group">
     <label class="control-label">Start</label>
     <div class="controls">
-		<input name="Filter[startDate]" id="startDate" class="date-picker" />
+		<input name="Filter[startDate]" id="startDate" class="date-picker" value="<?php echo @$_POST['Filter']['startDate']?>"/>
     </div>
 </div>
 <div class="control-group">
     <label class="control-label">End</label>
     <div class="controls">
-        <input name="Filter[endDate]" id="startDate" class="date-picker" />
+        <input name="Filter[endDate]" id="startDate" class="date-picker" value="<?php echo @$_POST['Filter']['endDate']?>"/>
     </div>
 </div>
 <div class="control-group">
