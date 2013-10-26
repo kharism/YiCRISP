@@ -27,7 +27,8 @@ class ClassmController extends Controller {
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
-                'actions' => array('index', 'view', 'update', 'create', 'delete', 'admin', 'ajaxGetAllClass','classPerformanceGraph','ajaxGetDetail'),
+                'actions' => array('index', 'view', 'update', 'create', 'delete', 'admin','printout', 'ajaxGetAllClass',
+						'classPerformanceGraph','ajaxGetDetail','getStudentPerformance'),
                 'roles' => array('admin'),
             ),
             array('deny', // deny all users
@@ -110,6 +111,29 @@ class ClassmController extends Controller {
             'dataProvider' => $dataProvider,
         ));
     }
+    
+    public function actionPrintout($id){
+                $this->layout = "//layouts/printLayout";
+		//$school = School::model()->findByPk($id);
+		$classes = Classm::model()->findAllByPk(array($id));
+		//var_dump($class);
+                $content = "";
+		foreach($classes as $class){
+			$students = $class->Students;
+			$this->render('_studentView',array('students'=>$students));
+			
+		}
+                
+	}
+	
+	public function actionGetStudentPerformance($id){
+		$performances = TestResult::model()->findAll(array(
+            'with' => array('test'),
+            'order' => 'test.date',
+            'condition' => 'student_id=' . $id
+        ));
+        TestResult::model()->getStudentCurrentResult($id);
+	}
 
     /**
      * Manages all models.
@@ -119,7 +143,8 @@ class ClassmController extends Controller {
         $model->unsetAttributes();  // clear any default values
         if (isset($_GET['Classm']))
             $model->attributes = $_GET['Classm'];
-        
+        if(isset($_GET['showAll']))
+			$model->AllTerm = true;
         $this->render('admin', array(
             'model' => $model,
         ));

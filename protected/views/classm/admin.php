@@ -10,6 +10,7 @@ $this->breadcrumbs = array(
 $this->menu = array(
     array('label' => 'List Classm', 'url' => array('index')),
     array('label' => 'Create Classm', 'url' => array('create')),
+    array('label' => 'ShowAll', 'url' => array('admin','showAll'=>'1'))
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -61,6 +62,15 @@ $this->widget('zii.widgets.grid.CGridView', array(
         'range',
         array(
             'class' => 'CButtonColumn',
+            'buttons'=>array(
+				'print'=>array(
+					'label'=>'',
+					'url'=>'Yii::app()->createUrl("classm/printout", array("id"=>$data->id))',
+					'options'=>array('class'=>'icon-print'),
+					
+				)
+			),
+			'template'=>'{view} {update} {print}'
         ),
     ),
 ));

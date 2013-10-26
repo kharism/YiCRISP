@@ -9,6 +9,7 @@
  */
 class Classm extends CActiveRecord {
 
+	public $AllTerm = false;
     /**
      * Returns the static model of the specified AR class.
      * @param string $className active record class name.
@@ -60,7 +61,7 @@ class Classm extends CActiveRecord {
             'School' => array(self::BELONGS_TO, 'School', 'school_id'),
             'Terms' => array(self::BELONGS_TO, 'Terms', 'terms_id'),
 	    'Capacity'=>array(self::STAT,'Student','class'),
-	    'Students'=>array(self::HAS_MANY,'Student','class'),
+	    'Students'=>array(self::HAS_MANY,'Student','class','order'=>'grade asc'),
         );
     }
     public function getRange(){
@@ -92,6 +93,9 @@ class Classm extends CActiveRecord {
         $criteria->compare('id', $this->id);
         $criteria->compare('school_id', $this->school_id);
         $criteria->compare('class', $this->class);
+		if(!$this->AllTerm){
+			$criteria->addCondition("Terms.date_begin<now() and Terms.date_end>now()");	
+		}
 
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,

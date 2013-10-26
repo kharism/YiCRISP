@@ -63,6 +63,15 @@ class TestResult extends CActiveRecord
             'test'=>array(self::BELONGS_TO,'Test','test_id'),
 		);
 	}
+	public function getStudentCurrentResult($sid){
+		$class = Student::model()->findByPk($sid)->Class;
+		$criteria = new CDbCriteria();
+		$criteria->with = array('test','class','class.Terms');
+		$criteria->addCondition('class.Terms.date_begin>test.date and class.Terms.date_end>test.date_end');
+		$criteria->addColumnConditions(array('student_id'=>$sid));
+		$res = TestResult::model()->findAll($criteria);
+		var_dump($res);
+	}
     public function getDate(){
         return $this->test->date;
     }

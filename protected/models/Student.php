@@ -101,8 +101,15 @@ class Student extends CActiveRecord {
                 'condition' => "year = $year and month=$month",
             ),
             'Parent'=>array(self::BELONGS_TO,'User','parent_id'),
+            'TestResult'=>array(self::HAS_MANY,'TestResult','student_id'),
         );
     }
+    
+    public function getCurrentTestResult(){
+		$criteria = new CDbCriteria();
+		$criteria->with = array('TestResult','Class','Class.Terms');
+		$criteria->addCondition('');
+	}
 
     public function getSex() {
         if ($this->gender == 1)
