@@ -44,7 +44,11 @@ class TestResultController extends Controller {
     public function actionAjaxGetClassChooser() {
         $test_id = @$_POST['test_id'];
         $test = Test::model()->findByPk($test_id);
-        $class = Classm::model()->findAllByAttributes(array('school_id'=>$test->school));
+        $criteria = new CDbCriteria();
+        $criteria->addColumnCondition(array('school_id'=>$test->school));
+        $criteria->with = array('Terms');
+        $criteria->addCondition("Terms.date_begin<now() and Terms.date_end>now()");
+        $class = Classm::model()->findAll($criteria);
         $class = CHtml::listData($class, 'id', 'class');
         //var_dump($class);
         $this->renderPartial('_subform', array('grade' => $test->grade,'class'=>$class));
@@ -55,8 +59,9 @@ class TestResultController extends Controller {
         $class_id = @$_POST['class_id'];
         $test_id = @$_POST['test_id'];
         //echo $_POST['class_id']." ".$_POST['test_id'];
+        $test = Test::model()->findByPk($test_id);
         if (!TestResult::model()->exists('class_id='. @$_POST['class_id'].' and test_id='.@$_POST['test_id'])) {
-            $students = Student::model()->findAllByAttributes(array('class' => @$_POST['class_id']));
+            $students = Student::model()->findAllByAttributes(array('class' => @$_POST['class_id'],'grade'=>$test->grade));
             foreach ($students as $student) {
                 if(TestResult::model()->exists('student_id='.$student->id.' and test_id='.@$_POST['test_id'])){
                     continue;
