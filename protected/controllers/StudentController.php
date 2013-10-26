@@ -117,6 +117,7 @@ class StudentController extends Controller {
         foreach ($performances as $performance) {
             array_push($data, array($performance->test_id, $performance->mark, $performance->calculatedMark));
         }
+        //var_dump($data);die();
         $plot = new PHPlot();
         $plot->SetDataValues($data);
         $plot->SetXTickLabelPos('none');

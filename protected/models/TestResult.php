@@ -67,10 +67,15 @@ class TestResult extends CActiveRecord
 		$class = Student::model()->findByPk($sid)->Class;
 		$criteria = new CDbCriteria();
 		$criteria->with = array('test','class','class.Terms');
-		$criteria->addCondition('class.Terms.date_begin>test.date and class.Terms.date_end>test.date_end');
-		$criteria->addColumnConditions(array('student_id'=>$sid));
+		$criteria->addCondition('Terms.date_begin<now() and Terms.date_end>now()');
+		$criteria->addColumnCondition(array('student_id'=>$sid));
+		$criteria->order = "test.date asc";
 		$res = TestResult::model()->findAll($criteria);
-		var_dump($res);
+		//var_dump($res);
+		/*foreach($res as $t){
+			var_dump($t->test->attributes);
+		}*/
+		return $res;
 	}
     public function getDate(){
         return $this->test->date;

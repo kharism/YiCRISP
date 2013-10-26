@@ -113,15 +113,22 @@ class ClassmController extends Controller {
     }
     
     public function actionPrintout($id){
-                $this->layout = "//layouts/printLayout";
+        $this->layout = "//layouts/printLayout";
 		//$school = School::model()->findByPk($id);
 		$classes = Classm::model()->findAllByPk(array($id));
 		//var_dump($class);
-                $content = "";
+        $content = "";
+                
 		foreach($classes as $class){
-			$students = $class->Students;
-			$this->render('_studentView',array('students'=>$students));
-			
+			$criteria = new CDbCriteria();
+			$criteria->distinct=true;
+			$rrr=Yii::app()->db->createCommand("select distinct student_id from test_result where class_id=".$id);
+			$rrr = $rrr->query()->readAll();
+			foreach($rrr as $key=>$val){
+				$rrr[$key] = $val['student_id'];
+			}
+			$students = Student::model()->findAllByPk($rrr);
+			$this->render('_studentView',array('students'=>$students));			
 		}
                 
 	}
@@ -132,7 +139,40 @@ class ClassmController extends Controller {
             'order' => 'test.date',
             'condition' => 'student_id=' . $id
         ));
-        TestResult::model()->getStudentCurrentResult($id);
+        $res = TestResult::model()->getStudentCurrentResult($id);
+		$data = array();
+		$dummy = array();
+		//var_dump($res);
+		$legends = array();
+		$ids = array();
+		foreach($res as $t){
+			$dummy[$t->test->category_one][] = $t->mark;
+			$legends[$t->test->category_one] = CategoryTestOne::model()->findByPk($t->test->category_one)->category;	
+			$ids[] = $t->test->category_one;
+		}
+		//var_dump($legends);
+		//var_dump($dummy);
+		$maxNum = 0;
+		foreach($dummy as $y){
+			$maxNum = max($maxNum,count($y));
+		}
+		//echo "rr".$maxNum;		
+		for($i=0;$i<$maxNum;$i++){
+			$data[$i][] = $i+1;
+			foreach(array_keys($dummy) as $t)
+			{
+				$data[$i][] = $dummy[$t][$i];
+			} 				
+		}
+		//var_dump($data);die();
+		$plot = new PHPlot();
+        $plot->SetDataValues($data);
+        $plot->SetPlotAreaWorld(0, 0, null, 100);
+        $plot->SetXTickLabelPos('none');
+        $plot->SetXTickPos('none');
+        $plot->SetTitle("Mark");
+        $plot->SetLegend($legends);
+        $plot->DrawGraph();
 	}
 
     /**
