@@ -7,7 +7,7 @@
  * @property integer $id
  * @property integer $class
  */
-class Classm extends CActiveRecord {
+class Classm extends LoggableModel {
 
 	public $AllTerm = false;
     /**

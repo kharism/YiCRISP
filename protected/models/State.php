@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $state_name
  */
-class State extends CActiveRecord
+class State extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

@@ -11,7 +11,7 @@
  * @property string $father_name 
  * @property string $mother_name
  */
-class User extends CActiveRecord {
+class User extends LoggableModel {
 
     private $groupsInts;
 

@@ -14,7 +14,7 @@
  * @property string $date_of_birth
  * @property string $date_enter 
  */
-class Student extends CActiveRecord {
+class Student extends LoggableModel {
 
     var $school_id2;
     var $reg2;
@@ -36,7 +36,7 @@ class Student extends CActiveRecord {
         $active = sprintf("%02d", $this->active);
         return @$date[0][2] . @$date[0][3] . $ge . $sid . $urutan . $active;
     }
-
+    
     public function findByRegistrationId($id) {
         $year = $id[0] . $id[1];
         $classEnter = $id[2] . $id[3];
@@ -169,10 +169,9 @@ class Student extends CActiveRecord {
         $criteria->compare('date_of_birth', $this->date_of_birth, true);
         //$criteria->select = array('*','Year(t.date_enter) as reg2');
         //$criteria->compare('Year(t.date_enter)', $this->reg2);
-
-        return new CActiveDataProvider($this, array(
+	$dp =  new CActiveDataProvider($this, array(
             'criteria' => $criteria,
-            'sort' => array(
+	    'sort' => array(
                 'class' => 'CSort',
                 'attributes' => array(
                     'id',
@@ -192,7 +191,9 @@ class Student extends CActiveRecord {
                     'grade',
                 )
             )
-        ));
+    ));
+	$dp->pagination = array('pageSize'=>$dp->totalItemCount);
+        return $dp;
     }
 
 }

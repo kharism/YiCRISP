@@ -13,7 +13,7 @@
  * @property integer $time_minute
  * @property integer $time_second
  */
-class TestResult extends CActiveRecord
+class TestResult extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

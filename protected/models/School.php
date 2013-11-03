@@ -10,7 +10,7 @@
  * @property integer $city
  * @property integer $level_of_school
  */
-class School extends CActiveRecord
+class School extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

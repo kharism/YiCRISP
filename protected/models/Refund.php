@@ -9,7 +9,7 @@
  * @property integer $ammount
  * @property string $reason
  */
-class Refund extends CActiveRecord
+class Refund extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

@@ -155,7 +155,7 @@ class StudentController extends Controller {
 		$model->grade_enter = $model->grade;
                 $model->class_enter = $model->class;
             $model->parent_id = $acc->id;
-            //var_dump($_POST['Student']);
+            //die();
             if ($model->parent_id == 0) {
                 $parentModel->attributes = $_POST["User"];
                 foreach ($_POST["User"] as $attr => $val) {
@@ -172,14 +172,15 @@ class StudentController extends Controller {
                     
                 }
             }
-
+			//echo count($parentModel->errors)." <<<<";
             if (count($parentModel->errors) == 0 && $model->save()) {
+		    //var_dump($model->getPrimaryKey());
                 if (isset($_POST['Payment'])) {
                     $invoice = new Invoice;
                     $invoice->ammount = $_POST['Payment']['ammount'];
                     $invoice->receiver_id = Yii::app()->user->id;
-		    $invoice->student_id = $model->id;
-		    $invoice->grade_received = $_POST['Student']['grade'];
+					$invoice->student_id = $model->id;
+					$invoice->grade_received = $_POST['Student']['grade'];
                     $invoice->payment_method = $_POST['Payment']['payment_method'];
                     $invoice->refferal_id = $_POST['Payment']['refferal_id'];
                     $invoice->save();

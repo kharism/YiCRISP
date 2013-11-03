@@ -168,6 +168,12 @@ class SchoolController extends Controller
 	public function actionIndex()
 	{
 		$dataProvider=new CActiveDataProvider('School');
+		$dataProvider->setPagination(
+			array(
+				//'class'=>'CPagination',
+				'pageSize'=>20,
+			)
+		);
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

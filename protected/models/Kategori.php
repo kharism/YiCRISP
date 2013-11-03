@@ -10,7 +10,7 @@
  * The followings are the available model relations:
  * @property Barang[] $barangs
  */
-class Kategori extends CActiveRecord
+class Kategori extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

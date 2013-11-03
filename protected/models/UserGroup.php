@@ -8,7 +8,7 @@
  * @property integer $user_id
  * @property integer $group_id
  */
-class UserGroup extends CActiveRecord
+class UserGroup extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

@@ -7,7 +7,7 @@
  * @property string $id
  * @property string $name
  */
-class PaymentMethod extends CActiveRecord
+class PaymentMethod extends LoggableModel 
 {
 	/**
 	 * Returns the static model of the specified AR class.

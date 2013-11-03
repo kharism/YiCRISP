@@ -7,7 +7,7 @@
  * @property integer $id
  * @property string $category
  */
-class CategoryTestOne extends CActiveRecord
+class CategoryTestOne extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

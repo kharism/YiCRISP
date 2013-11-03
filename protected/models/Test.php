@@ -19,7 +19,7 @@
  * @property integer $class
  * @property integer $student
  */
-class Test extends CActiveRecord {
+class Test extends LoggableModel {
 
     var $_school;
     var $_cat1;

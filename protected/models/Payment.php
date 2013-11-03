@@ -13,7 +13,7 @@
  * @property string $payment_date
  * @property integer $paket 
  */
-class Payment extends CActiveRecord {
+class Payment extends LoggableModel {
 
     var $months;
     var $paket;

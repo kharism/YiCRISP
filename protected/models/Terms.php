@@ -8,7 +8,7 @@
  * @property string $date_begin
  * @property integer $date_end
  */
-class Terms extends CActiveRecord
+class Terms extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

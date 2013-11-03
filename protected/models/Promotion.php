@@ -12,7 +12,7 @@
  * @property integer $ammount
  * @property integer $months
  */
-class Promotion extends CActiveRecord
+class Promotion extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

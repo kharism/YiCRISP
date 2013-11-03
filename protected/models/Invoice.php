@@ -10,7 +10,7 @@
  * @property integer $ammount
  * @property integer $date
  */
-class Invoice extends CActiveRecord
+class Invoice extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

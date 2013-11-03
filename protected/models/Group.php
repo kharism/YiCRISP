@@ -8,7 +8,7 @@
  * @property string $name
  * @property string $description
  */
-class Group extends CActiveRecord
+class Group extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

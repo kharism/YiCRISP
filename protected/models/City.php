@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This is the model class for table "city".
  *
@@ -8,7 +7,7 @@
  * @property integer $state
  * @property string $city_name
  */
-class City extends CActiveRecord
+class City extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -53,7 +52,7 @@ class City extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-            'State'=>array(self::BELONGS_TO,'State','id'),
+            'State'=>array(self::BELONGS_TO,'State','state'),
 		);
 	}
 

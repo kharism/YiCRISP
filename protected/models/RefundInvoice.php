@@ -9,7 +9,7 @@
  * @property integer $ammount
  * @property string $date
  */
-class RefundInvoice extends CActiveRecord
+class RefundInvoice extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

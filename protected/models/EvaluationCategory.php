@@ -9,7 +9,7 @@
  * @property integer $mistakes
  * @property string $time
  */
-class EvaluationCategory extends CActiveRecord
+class EvaluationCategory extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.

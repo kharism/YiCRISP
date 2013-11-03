@@ -8,7 +8,7 @@
  * @property string $name
  * @property string $value
  */
-class Config extends CActiveRecord
+class Config extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.
