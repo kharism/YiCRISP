@@ -59,7 +59,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
 			'buttons'=>array(
 				'logs'=>array(
 					'label'=>'',
-					'url'=>'Yii::app()->createUrl("log/viewLog",array("model"=>"Student","model_id"=>$data->id))',
+					'url'=>'Yii::app()->createUrl("log/viewLog",array("model"=>"User","model_id"=>$data->id))',
 					'options'=>array(
 						'class'=>' icon-exclamation-sign'
 					),
