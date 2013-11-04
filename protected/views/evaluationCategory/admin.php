@@ -51,6 +51,16 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'time',
 		array(
 			'class'=>'CButtonColumn',
+			'template' => '{view} {update} {logs}',
+			'buttons'=>array(
+				'logs'=>array(
+					'label'=>'',
+					'url'=>'Yii::app()->createUrl("log/viewLog",array("model"=>"EvaluationCategory","model_id"=>$data->id))',
+					'options'=>array(
+						'class'=>' icon-exclamation-sign'
+					),
+				),
+            ),
 		),
 	),
 )); ?>

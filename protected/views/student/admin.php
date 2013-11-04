@@ -86,7 +86,16 @@ $this->widget('zii.widgets.grid.CGridView', array(
          */
         array(
             'class' => 'CButtonColumn',
-            'template' => '{view} {update}',
+            'template' => '{view} {update} {logs}',
+            'buttons'=>array(
+				'logs'=>array(
+					'label'=>'',
+					'url'=>'Yii::app()->createUrl("log/viewLog",array("model"=>"Student","model_id"=>$data->id))',
+					'options'=>array(
+						'class'=>' icon-exclamation-sign'
+					),
+				),
+            ),
         ),
     ),
 ));

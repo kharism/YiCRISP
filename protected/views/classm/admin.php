@@ -66,11 +66,17 @@ $this->widget('zii.widgets.grid.CGridView', array(
 				'print'=>array(
 					'label'=>'',
 					'url'=>'Yii::app()->createUrl("classm/printout", array("id"=>$data->id))',
-					'options'=>array('class'=>'icon-print'),
-					
-				)
+					'options'=>array('class'=>'icon-print'),	
+				),
+				'logs'=>array(
+					'label'=>'',
+					'url'=>'Yii::app()->createUrl("log/viewLog",array("model"=>"Classm","model_id"=>$data->id))',
+					'options'=>array(
+						'class'=>' icon-exclamation-sign'
+					),
+				),
 			),
-			'template'=>'{view} {update} {print}'
+			'template'=>'{view} {update} {logs} {print}'
         ),
     ),
 ));
