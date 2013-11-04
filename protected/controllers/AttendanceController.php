@@ -93,7 +93,7 @@ class AttendanceController extends Controller {
             }
 	    else{
 		    #var_dump($students);
-                /*foreach ($students as $id => $student) {
+                foreach ($students as $id => $student) {
                     $attendance = new Attendance;
                     $attendance->attend = $_POST['Attendance']['attend'][$id];
                     $attendance->student_id = $student->id;
@@ -102,7 +102,8 @@ class AttendanceController extends Controller {
                     $attendance->grade = $_POST['Attendance']['grade'];
                     $attendance->teacher_id = Yii::app()->user->id;
                     $attendance->save();
-		}*/}
+				}
+		}
         }
         $this->renderPartial('_attendanceList', array('model' => $students));
     }

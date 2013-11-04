@@ -33,7 +33,6 @@ Yii::app()->clientscript
         <!-- Le styles -->
         <style type="text/css">
             body {
-                padding-top: 80px;
                 padding-bottom: 0px;
             }
             .sidebar-nav {
@@ -55,11 +54,16 @@ Yii::app()->clientscript
     </head>
 
     <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner visible-desktop">
                 <div class="container-fluid">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
                     <a class="brand" href="#"><img src="images/Company-Logo.png" alt="<?php echo Yii::app()->name ?>"></a>
-                    <div class="nav-collapse">
+                    <div class="nav-collapse colapse">
                         <?php
                         $this->widget('zii.widgets.CMenu', array(
                             'htmlOptions' => array('class' => 'nav nav-tabs'),
@@ -160,6 +164,7 @@ Yii::app()->clientscript
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
+				
                 <div class="span2">
                     <div class="well sidebar-nav">
                         <ul class="nav nav-list">

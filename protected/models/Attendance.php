@@ -11,7 +11,7 @@
  * @property string $teacher_id
  * @property integer $attend
  */
-class Attendance extends CActiveRecord
+class Attendance extends LoggableModel
 {
 	/**
 	 * Returns the static model of the specified AR class.
