@@ -62,7 +62,7 @@ class AttendanceController extends Controller {
             $attendance = Attendance::model()->findAll($criteria);
             $temp = array();
             foreach ($attendance as $i) {
-                $temp[$i->student_id][$i->date] = $i->attend;
+                $temp[$i->student_id][$i->date] = $i;
             }
             $attendance = $temp;
         }
@@ -78,8 +78,10 @@ class AttendanceController extends Controller {
 	    #var_dump($_POST['Attendance']['attend']);	
 	    $old = Attendance::model()->findAllByAttributes(array(
                 'date' => $_POST['Attendance']['date'],
+                'grade'=> $_POST['Attendance']['grade'],
                 'class' => $_POST['Attendance']['class'],
             ));
+            //var_dump($old);die();
             if ($old != null) {
 
                 foreach ($old as $t => $i) {
@@ -111,8 +113,8 @@ class AttendanceController extends Controller {
     public function actionAjaxGetClass() {
         $id = $_POST['Attendance']['school_id'];
         $criteria = new CDbCriteria();
-	$criteria->addColumnCondition(array('school_id'=> $id));
-	$criteria->with = array(
+		$criteria->addColumnCondition(array('school_id'=> $id));
+		$criteria->with = array(
             'Terms' => array(
 		    'condition' => 'date_begin <now() and date_end>now()'
             )

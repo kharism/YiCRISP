@@ -73,7 +73,7 @@ echo CHtml::form('', 'POST', array('class' => 'form'));
 <div class="row">
     <span class="span3"><?php echo Student::model()->findByPk($id)->student_name;?></span>
     <?php foreach($attendance as $y):?>
-    <span class="span3"><?php echo $y;?></span>
+    <span class="span3"><a href="<?php echo Yii::app()->createUrl("log/viewLog",array("model"=>"Attendance","model_id"=>$y->id))?>"><?php echo $y->attend;?></a></span>
     <?php endforeach;?>
 </div>    
 <?php 
