@@ -20,7 +20,7 @@ class Terms extends LoggableModel
 		return parent::model($className);
 	}
         public function getRange(){
-            return $this->date_begin."-".$this->date_end;
+            return "[".$this->date_begin."]-[".$this->date_end."]";
         }
 
 	/**
@@ -44,6 +44,11 @@ class Terms extends LoggableModel
 			// Please remove those attributes that should not be searched.
 			array('id, date_begin, date_end', 'safe', 'on'=>'search'),
 		);
+	}
+	
+	public function getClasses($schoolId){
+		$classes = Classm::model()->findAllByAttributes(array("terms_id"=>$this->id,'school_id'=>$schoolId));
+		return $classes;
 	}
 
 	/**

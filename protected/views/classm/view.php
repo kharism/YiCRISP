@@ -28,5 +28,7 @@ $this->menu=array(
         
 	),
 )); ?>
-<h3>Graph</h3>
-<?php echo CHtml::image($this->createAbsoluteUrl('classm/classPerformanceGraph', array('id'=>$model->id)))?>
+<?php for($i=1;$i<=9;$i++):?>
+	<a href="<?php echo $this->createUrl("levelClass/view",array("level"=>$i,"class"=>$model->id))?>"><h4>Level <?php echo $i?> : <?php echo $model->getStudentCount($i);?> Student(s)</h4></a>
+<?php endfor;?>
+<?php //echo CHtml::image($this->createAbsoluteUrl('classm/classPerformanceGraph', array('id'=>$model->id)))?>

@@ -60,10 +60,13 @@ class Classm extends LoggableModel {
         return array(
             'School' => array(self::BELONGS_TO, 'School', 'school_id'),
             'Terms' => array(self::BELONGS_TO, 'Terms', 'terms_id'),
-	    'Capacity'=>array(self::STAT,'Student','class'),
-	    'Students'=>array(self::HAS_MANY,'Student','class','order'=>'grade asc'),
+			'Capacity'=>array(self::STAT,'Student','class'),
+			'Students'=>array(self::HAS_MANY,'Student','class','order'=>'grade asc'),
         );
     }
+    public function getStudentCount($level){
+		return Student::model()->countByAttributes(array("class"=>$this->id,"grade"=>$level));
+	}
     public function getRange(){
         if($this->terms_id>0)
         return $this->Terms->getRange();

@@ -154,7 +154,7 @@ class StudentController extends Controller {
 		//var_dump($model->attributes);die();
 		$model->grade_enter = $model->grade;
                 $model->class_enter = $model->class;
-            $model->parent_id = $acc->id;
+            $model->parent_id = $_POST["Student"]["parent_id"];
             //die();
             if ($model->parent_id == 0) {
                 $parentModel->attributes = $_POST["User"];

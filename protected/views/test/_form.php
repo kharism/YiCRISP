@@ -58,7 +58,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'grade'); ?>
-		<?php echo $form->dropDownList($model,'grade',array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6')); ?>
+		<?php echo $form->dropDownList($model,'grade',array('1'=>'1','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7','8'=>'8','9'=>'9')); ?>
 		<?php echo $form->error($model,'grade'); ?>
 	</div>
 

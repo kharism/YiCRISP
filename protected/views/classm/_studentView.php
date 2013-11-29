@@ -26,11 +26,11 @@
             <table>
                 <tr>
                     <td>Father</td>
-                    <td><?php echo $model->Parent->father_phone?></td>
+                    <td><?php echo $model->Parent->father_name?></td>
                 </tr>
                 <tr>
                     <td>Mother</td>
-                    <td><?php echo $model->Parent->mother_phone?></td>
+                    <td><?php echo $model->Parent->mother_name?></td>
                 </tr>
             </table>
         </td>
@@ -81,6 +81,8 @@
 		<?php endforeach;?>
 	</table>
 </div>
+<h3>Comment</h3>
+<?php echo @Komentar::model()->findByAttributes(array('terms_id'=>$model->Class->Terms->id,'student_id'=>$model->id))->comment;?>
 <?php endforeach;?>
 <span class="breakHere"></span>
 <?php endforeach;?>

@@ -55,7 +55,7 @@ class ClassmController extends Controller {
 
         // Uncomment the following line if AJAX validation is needed
         // $this->performAjaxValidation($model);
-
+		$model->terms_id = @$_GET["terms"];
         if (isset($_POST['Classm'])) {
             $model->attributes = $_POST['Classm'];
             if ($model->save())

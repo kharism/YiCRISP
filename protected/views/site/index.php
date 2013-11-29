@@ -9,3 +9,5 @@ $this->pageTitle=Yii::app()->name;
 <p>
 pick a menu from top bar
 </p>
+<?php if(Yii::app()->user->admin)$this->renderPartial("adminMenu");?>
+
