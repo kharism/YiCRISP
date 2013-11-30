@@ -182,6 +182,17 @@ Yii::app()->clientscript
                 </div><!--/span-->
                 <div class="span10">
                     <div class="hero-unit">
+                        <?php if(isset($this->breadcrumbs)):?>
+                            <div class="row-fluid">
+                                <div class="span12">
+                                <?php
+                                $this->widget('zii.widgets.CBreadcrumbs', array(
+                                    'links'=>$this->breadcrumbs,
+                                ));
+                                ?>
+                                </div>
+                            </div>
+                        <?php endif;?>
                         <?php echo $content ?>
                     </div>
                     <!--/row-->

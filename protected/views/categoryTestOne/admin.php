@@ -3,7 +3,7 @@
 /* @var $model CategoryTestOne */
 
 $this->breadcrumbs=array(
-	'Category Test Ones'=>array('index'),
+	'Test Category'=>array('index'),
 	'Manage',
 );
 

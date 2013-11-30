@@ -1,6 +1,7 @@
 <?php
 /* @var $model Attendance */
 ?>
+<h1>View Attendence Report</h1>
 <?php
 echo CHtml::form('', 'POST', array('class' => 'form'));
 ?>

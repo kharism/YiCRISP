@@ -2,11 +2,6 @@
 /* @var $this PaymentController */
 /* @var $model Payment */
 /* @var $form CActiveForm */
-$this->menu = array(
-    array('label' => 'Report Paid', 'url' => array('report')),
-    array('label' => 'Report Unpaid', 'url' => array('reportUnpaid')),
-    array('label' => 'Search', 'url' => array('search')),
-);
 ?>
 <h1>Create Payment</h1>
 <div class="row">

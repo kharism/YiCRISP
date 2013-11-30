@@ -3,6 +3,15 @@
 class InvoiceController extends Controller {
 
     public function actionIndex() {
+        $this->breadcrumbs=array(
+            'Invoice'=>array('invoice/index'),
+            
+        );
+        $this->menu = array(
+            array('label' => 'Search', 'url' => array('search')),
+            array('label' => 'Report Income', 'url' => array('reportIncome')),
+            array('label' => 'Report Refund', 'url' => array('reportRefund')),
+        );
         $this->render('index');
     }
 
@@ -30,6 +39,10 @@ class InvoiceController extends Controller {
     
 
     public function actionSearch() {
+        $this->breadcrumbs=array(
+            'Invoice'=>array('invoice/index'),
+            'Search',
+        );
         $invoice = new Invoice;
         $payment = array();
         if (isset($_POST['Invoice'])) {
@@ -61,6 +74,10 @@ class InvoiceController extends Controller {
         $this->render('searchInvoice', array('model' => $invoice,'payment'=>$payment));
     }
     public function actionReportIncome(){
+        $this->breadcrumbs=array(
+            'Invoice'=>array('invoice/index'),
+            'Report Income',
+        );
         $year = substr($_GET['d'], 0, 4);
         $month = substr($_GET['d'], 4, 2);
         $criteria = new CDbCriteria();
@@ -72,6 +89,10 @@ class InvoiceController extends Controller {
     }
     
     public function actionReportRefund(){
+        $this->breadcrumbs=array(
+            'Invoice'=>array('invoice/index'),
+            'Report Refund',
+        );
         $year = substr($_GET['d'], 0, 4);
         $month = substr($_GET['d'], 4, 2);
         $criteria = new CDbCriteria();

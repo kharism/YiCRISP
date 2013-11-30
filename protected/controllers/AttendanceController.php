@@ -8,8 +8,7 @@ class AttendanceController extends Controller {
         $this->menu = array(
             array('label' => 'Create Attendance Report', 'url' => array('create')),
             array('label' => 'Attendance Report', 'url' => array('report')),
-            array('label' => 'Search', 'url' => array('search')),
-        );
+        );        
     }
 
     public function actionIndex() {
@@ -53,6 +52,10 @@ class AttendanceController extends Controller {
     }
 
     public function actionReport() {
+        $this->breadcrumbs = array(
+            'Attendance'=>array('index'),
+            'Report'
+        );
         $attendance = new Attendance;
         if (isset($_POST['Filter'])) {
             $criteria = new CDbCriteria();
@@ -130,7 +133,10 @@ class AttendanceController extends Controller {
     }
 
     public function actionCreate() {
-
+        $this->breadcrumbs = array(
+            'Attendance'=>array('index'),
+            'Create'
+        );
         $this->render('create');
     }
 

@@ -1,4 +1,4 @@
-
+<h1>Insert Attendence Data</h1>
 <?php echo CHtml::form('','post',array('id'=>'attendance_create')); ?>
 <div class="control-group">
     <?php

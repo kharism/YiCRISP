@@ -82,6 +82,7 @@ class UserController extends Controller {
     }
 
     public function actionProfile() {
+        $this->breadcrumbs["Profile"]=array("user/profile");
         $user = User::model()->findByPk(Yii::app()->user->id);
         $oldPass = $user->password;            
         $user->password = "";

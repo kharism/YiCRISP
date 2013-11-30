@@ -26,7 +26,6 @@ $this->menu=array(
 	'attributes'=>array(
 		'id',
 		'CategoryOne.category',
-		'CategoryTwo.category',
 		'date',
 		//'exercise_id',
 		//'number_of_question',
@@ -58,9 +57,7 @@ $this->menu=array(
         ),
         array(
             'name'=>'Average',
-            'value'=>'$data["average"]',
+            'value'=>'sprintf("%.2f",$data["average"])',
         ),
     )));
 ?>
-<h3>Graphic</h3>
-<?php echo CHtml::image($this->createAbsoluteUrl('test/performancegraph',array('id'=>$model->id)))?>

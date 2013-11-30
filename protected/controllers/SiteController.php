@@ -1,6 +1,9 @@
 <?php
 
 class SiteController extends Controller {
+    var $breadcrumbs = array(
+            ""
+        );
 
     /**
      * Declares class-based actions.
@@ -79,6 +82,7 @@ class SiteController extends Controller {
      * Displays the login page
      */
     public function actionLogin() {
+        
         $model = new LoginForm;
 
         // if it is ajax validation request

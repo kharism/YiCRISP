@@ -6,8 +6,9 @@ class PaymentController extends Controller {
         parent::__construct($id, $module);
         $this->menu = array(
             array('label' => 'Report Paid', 'url' => array('report')),
-            array('label' => 'Report Unpaid', 'url' => array('reportUnpaid')),
-            array('label' => 'Search', 'url' => array('search')),
+            array('label' => 'Add Payment', 'url' => array('admin2')),
+            //array('label' => 'Report Unpaid', 'url' => array('reportUnpaid')),
+            
         );
     }
 
@@ -36,6 +37,10 @@ class PaymentController extends Controller {
     }
 
     public function actionReport() {
+        $this->breadcrumbs = array(
+            'Payment'=>array('payment/index'),
+            'Report Payment'
+        );
         $model = new Payment;
         Yii::app()->clientScript->registerCoreScript('jquery.ui');
         if (isset($_POST['Filter'])) {
@@ -112,6 +117,10 @@ class PaymentController extends Controller {
     }
 
     public function actionAdmin2() {
+        $this->breadcrumbs = array(
+            'Payment'=>array('payment/index'),
+            'Create'
+        );
         $model = new Payment;
         $invoice = null;
         $model->ammount = Config::model()->findByAttributes(array('name' => 'tuition'))->value;

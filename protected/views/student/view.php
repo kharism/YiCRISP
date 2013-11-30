@@ -49,6 +49,14 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'value'=>'$data->test->id',
         ),
         array(
+            'name'=>'Category',
+            'value'=>'$data->test->CategoryOne->category',
+        ),
+        array(
+            'name'=>'Test ID',
+            'value'=>'$data->test->id',
+        ),
+        array(
             'value'=>'$data->answered',
             'name'=>'Answered',
         ),

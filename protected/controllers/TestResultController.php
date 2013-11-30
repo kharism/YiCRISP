@@ -3,7 +3,10 @@
 class TestResultController extends Controller {
 
     public function actionIndex() {
-        
+        $this->breadcrumbs=array(
+            "Test"=>array('test/admin'),
+            "Test Result"=>array("testResult/index"),
+        );
         $this->render('index');
     }
 
